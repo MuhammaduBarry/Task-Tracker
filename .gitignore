@@ -1,0 +1,13 @@
+# Ignroe virtual environemnt
+.venv/
+
+# Ignore python cache files
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Ignore idea file
+.idea
+
+# Ignore .DS_Store
+.DS_Store
