@@ -1,6 +1,7 @@
 import argparse
+import sys
 
-from commands import add
+from commands import add, update, delete,list_task
 # Create argument parser
 parser = argparse.ArgumentParser(prog="CLI task tracker")
 
@@ -18,3 +19,32 @@ args = parser.parse_args()
 if __name__ == "__main__":
     if args.add:
         add(args.add)
+        
+    if args.update:
+        # Unpacking the two arguments given
+        id_arg, description_arg = args.update
+        while True:
+            prompt_update = input("Are you sure you want to update task [Y/N]?: ")
+            if prompt_update in ["Y", "y"]:
+                update(int(id_arg), description_arg)
+                break
+            elif prompt_update in ["N", "n"]:
+                sys.exit(0)
+            else:
+                print("Wrong input please type [Y/N]")
+
+    if args.delete:
+        while True:
+            prompt_delete = input("Are you sure you want to delete task [Y/N]?: ")
+            if prompt_delete in ["Y", "y"]:
+                delete(args.delete)
+                break
+            elif prompt_delete in ["N", "n"]:
+                sys.exit(0)
+            else:
+                print("Wrong input please type [Y/N]")
+
+            
+
+    if args.list:
+        list_task(args.list)
