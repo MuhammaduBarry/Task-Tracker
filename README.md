@@ -27,4 +27,9 @@ py or python or python3 main.py ....
 ```
 which ever works on your device
 
+for any help:
+```bash
+py or python or python3 main.py --help
+```
+
 credit to roadmap.sh for the idea: [https://roadmap.sh/projects/task-tracker](https://roadmap.sh/projects/task-tracker)
