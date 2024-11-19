@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from commands import add, update, delete,list_task
+from commands import add, update, delete, mark_in_progress, mark_done, list_task, list_all_task
 # Create argument parser
 parser = argparse.ArgumentParser(prog="CLI task tracker")
 
@@ -44,7 +44,13 @@ if __name__ == "__main__":
             else:
                 print("Wrong input please type [Y/N]")
 
-            
+    if args.mark_in_progress:
+        mark_in_progress(args.mark_in_progress)
 
-    if args.list:
+    if args.mark_done:
+        mark_done(args.mark_done)
+
+    if args.list is None:
+        list_all_task()
+    else:
         list_task(args.list)

@@ -57,10 +57,48 @@ def delete(args: int):
     return dump_json(file, data)
 
 def mark_in_progress(args: str):
-    pass
+    data = load_json(file)
+
+    for task in data["tasks"]:
+        if task["id"] == args:
+            if task["status"] == status[1]:
+                print(f"Task id: {task["id"]} status is already in-progress")
+            else:
+                task["status"] = status[1]
+            break
+    if args > data["num_of_task"]:
+        print(f"Task id: {args} does not exist yet, please create one")
+
+    return dump_json(file, data)
 
 def mark_done(args: str):
-    pass
+    data = load_json(file)
+
+    for task in data["tasks"]:
+        if task["id"] == args:
+            if task["status"] == status[2]:
+                print(f"Task id: {task["id"]} status is already done")
+            else:
+                task["status"] = status[2]
+            break
+    if args > data["num_of_task"]:
+        print(f"Task id: {args} does not exist yet, please create one")
+
+    return dump_json(file, data)
 
 def list_task(args: str):
-    print(args)
+    data = load_json(file)
+
+    for task in data["tasks"]:
+        if task["status"] == args:
+            print(f"\n{task}\n")
+            break
+        else:
+            print("status does not exist")
+            break # I was lazy :(
+
+def list_all_task():
+    data = load_json(file)
+
+    for task in data["tasks"]:
+        print(f"\n{task}\n")
